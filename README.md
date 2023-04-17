@@ -1,6 +1,6 @@
 # SC23 Scaling Deep Learning
 Artifacts from the models trained for the submitted Super Compute 2023 Paper: 
->**Scaling Deep Learning Research with Kubernetes on the NRP Nautilus HyperCluster**
+>**Scaling Deep Learning Research with Kubernetes on the NRP Nautilus HyperCluster**<br />
 > _J. Alex Hurt, Anes Ouadou, Mariam Alshehri, and Grant J. Scott_
 
 This paper discusses the scaling of three remote sensing imagery scientific applications utilizing Deep Learning on the NRP Nautilus Hyper Cluster.
