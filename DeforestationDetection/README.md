@@ -35,4 +35,4 @@ This command will automatically download the Sentinel-2 tiles, using the provide
 
 In order to successfully run the training, you need to modify the `data_config.py` file by updating the `DataConfig` class. This includes specifying the path to your dataset folder.
 
-A Jupyter Notebook file is provided to assist you in creating the YAML configuration file needed to run the training process. Also you can refer to the example YAML file found in the same directory.
+The provided Jupyter Notebook file enables you to automatically generate the YAML configuration files required for executing the training process. Additionally, an example YAML file is included in the same directory for your reference.
