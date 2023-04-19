@@ -1,0 +1,31 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: job-sentinel-download-2-6-3
+spec:
+  template:
+    spec:
+      containers:
+      - name: pod-sentinel-download-2-6-3
+        image: gitlab-registry.nrp-nautilus.io/aomqc/deeplearning_pytorch:bc1aa4e7
+        workingDir: /canada/data/set2/batch_6
+        command: ["/bin/sh","-c"]
+        args:
+        - chmod 777 dhusget.sh;
+          python3 sentinel_data_download.py username password sentinel_coordinates/Canada_fir_2019_2_6.yaml
+        volumeMounts:
+        - name: canada
+          mountPath: /canada  
+        resources:
+            limits:
+              memory: 1Gi
+              cpu: "1"
+            requests:
+              memory: 1Gi
+              cpu: "1"               
+      volumes:
+      - name: canada 
+        persistentVolumeClaim:
+            claimName: canada2019-3
+      restartPolicy: OnFailure      
+  backoffLimit: 
