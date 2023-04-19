@@ -1,0 +1,31 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: anes-job-train-exp17-unet-img
+spec:
+  template:
+    spec:
+      containers:
+      - name: anes-pod-train-exp17-unet-img
+        image: gitlab-registry.nrp-nautilus.io/jhurt/cgisegment:e98e742e
+        command: ["/bin/sh","-c"]
+        args:
+        - python3 main.py --task train --output_dir /canada2019-3/experiments/exp17/output_dir_unet_img --config /canada2019-3/experiments/exp17/configs/unet_img_training_config.json
+        volumeMounts:
+        - name: canada2019-3
+          mountPath: /canada2019-3  
+        resources:
+            limits:
+              memory: 24Gi
+              cpu: "4"
+              nvidia.com/gpu: 2
+            requests:
+              memory: 24Gi
+              cpu: "4"
+              nvidia.com/gpu: 2
+      volumes:
+      - name: canada2019-3 
+        persistentVolumeClaim:
+            claimName: canada2019-3
+      restartPolicy: OnFailure      
+  backoffLimit: 
