@@ -7,7 +7,8 @@ jalexhurt/sc23-burned-area-segmentation
 ```
 
 # Data processing pipeline
-The pipeline consists of 6 steps for which the yml files are saved in **canada_2019_sentinel_pipeline** folder:
+The pipeline consists of 6 steps for which the yml files are saved in [canada_2019_sentinel_pipeline](./ObjectDetectionTransformers/BurnedAreaSegmentation
+/canada_2019_sentinel_pipeline) folder:
 - 0.pull_repo: contains yml files to pull repo that contains all the code usid in this process as well as a folder that contains coordiantes for rasters to be downloaded
 - 1.download: contains yml files to start the download operation of rasters
 - 2.postprocessing: contains yml files to extract the RGB bands to form an RGB image, pull the cloud mask, and pull the TCI image. 
