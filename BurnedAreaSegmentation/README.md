@@ -15,10 +15,10 @@ The pipeline consists of 6 steps for which the yml files are saved in [canada_20
 - 4.create_label: contains yml files for the creation of Burned Area mask
 - 5.generate_chips: contains yml files for the generation of chips
 
-the jupyter notebook **generate_job_config_sentinel_pipeline.ipynb** can be used to auto-generate these yml files. The options can be chnaged within the notebook
+the jupyter notebook [generate_job_config_sentinel_pipeline.ipynb](./generate_job_config_sentinel_pipeline.ipynb) can be used to auto-generate these yml files. The options can be chnaged within the notebook
 
 # Deep Learning model training
-The yml files are saved in **experiments** folder
+The yml files are saved in [experiments](./experiments) folder
 
 ## config file generation
 The notebook **modify_train_config.ipynb** is used to auto-generate the config files for training and evaluation of deep learning models
