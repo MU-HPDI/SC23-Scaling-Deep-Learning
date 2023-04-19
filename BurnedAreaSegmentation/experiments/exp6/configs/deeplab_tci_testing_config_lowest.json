@@ -1,0 +1,19 @@
+{
+    "model_architecture": "DeepLabV3",
+    "model_args": {
+        "encoder_name": "resnet50",
+        "encoder_weights": null
+    },
+    "gpus": [
+        0
+    ],
+    "num_classes": 2,
+    "testing_data": [
+        {
+            "image_dir": "/canada2019-3/training_data_png/tcis/test/",
+            "mask_dir": "/canada2019-3/training_data_png/labs/test/"
+        }
+    ],
+    "testing_batch_size": 1,
+    "pretrained_model_path": "/canada2019-3/experiments/exp6/output_dir_deeplab_tci/models/EPOCH28.pt"
+}
