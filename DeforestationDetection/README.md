@@ -14,18 +14,19 @@ The data processing pipeline consists of sequential steps, where the output of o
 
 ### Step 1: Downloading Sentinel-2 Tiles 
 
-Ensure you meet the following requirements:
+The following requirements must be met:
 
-1. **Create a Sentinel-2 API Account:** If you do not have an account, visit the [Copernicus Open Access Hub](https://scihub.copernicus.eu/) to create one.
+1. **Create a Sentinel-2 API Account:** If an account is not already available, create one by visiting the [Copernicus Open Access Hub](https://scihub.copernicus.eu/).
 
-2. **Set Environment Variables:** After registration, configure the following environment variables with your Sentinel-2 API credentials:
+2. **Set Environment Variables:** Upon registration, configure the following environment variables with the Sentinel-2 API credentials:
    
    - `SENTINELSAT_USERNAME`
    - `SENTINELSAT_PASSWORD`
 
-3. **Download Required Data:** Obtain the conservation units and yearly deforestation files from the [TerraBrasilis website](http://terrabrasilis.dpi.inpe.br/en/download-2/).
+3. **Download Required Data:** Acquire the conservation units and yearly deforestation files from the [TerraBrasilis website](http://terrabrasilis.dpi.inpe.br/en/download-2/).
 
-With the prerequisites in place, execute the `step1_download.py` script as follows:
+Once the prerequisites are in place, execute the `step1_download.py` script as follows:
+
 
 ```
 python step1_download.py yearly_deforestation.shp conservation_units_amazon_biome.shp <sentinel_output_dataset_path>
@@ -43,6 +44,7 @@ After completing Step 1, follow the instructions below:
 
 ## Training with ChangeFormer
 
-In order to successfully run the training, you need to modify the `data_config.py` file by updating the `DataConfig` class. This includes specifying the path to your dataset folder.
+To successfully run the training, the `DataConfig` class in the `data_config.py` file must be updated with the appropriate dataset folder path.
 
-The provided Jupyter Notebook file enables you to automatically generate the YAML configuration files required for executing the training process. Additionally, an example YAML file is included in the same directory for your reference.
+The provided Jupyter Notebook file facilitates the automatic generation of YAML configuration files necessary for executing the training process. Furthermore, an example YAML file is included in the same directory for reference.
+
