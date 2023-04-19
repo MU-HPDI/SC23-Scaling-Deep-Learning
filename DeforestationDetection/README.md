@@ -12,7 +12,9 @@ This container was used to train all [ChangeFormer](https://github.com/wgcban/Ch
 
 The data processing pipeline consists of sequential steps, where the output of one step serves as the input for the subsequent step.
 
-### To start step 1 (download the Sentinel-2 tiles), ensure you meet the following requirements:
+### Step 1: Downloading Sentinel-2 Tiles 
+
+Ensure you meet the following requirements:
 
 1. **Create a Sentinel-2 API Account:** If you do not have an account, visit the [Copernicus Open Access Hub](https://scihub.copernicus.eu/) to create one.
 
@@ -30,6 +32,14 @@ python step1_download.py yearly_deforestation.shp conservation_units_amazon_biom
 ```
 
 This command will automatically download the Sentinel-2 tiles, using the provided shapefiles for yearly deforestation and conservation units, and save the output to the specified dataset path.
+
+### Post Step 1: Tile Selection and Subsequent Steps
+
+After completing Step 1, follow the instructions below:
+
+1. **Tile Selection:** Carefully review and manually select the highest quality tiles for use in the subsequent steps of the pipeline.
+
+2. **Execute Remaining Steps:** With the optimal tiles selected, proceed to execute Steps 2, 3, 4, and 5. Ensure that each step is completed successfully before proceeding to the next one.
 
 ## Training with ChangeFormer
 
