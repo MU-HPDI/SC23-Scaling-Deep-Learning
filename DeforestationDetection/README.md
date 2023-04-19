@@ -40,11 +40,11 @@ After completing Step 1, follow the instructions below:
 
 1. **Tile Selection:** Carefully review and manually select the highest quality tiles for use in the subsequent steps of the pipeline.
 
-2. **Execute Remaining Steps:** With the optimal tiles selected, proceed to execute Steps 2, 3, 4, and 5. Ensure that each step is completed successfully before proceeding to the next one.
+2. **Execute Remaining Steps:** With the optimal tiles selected, proceed to execute Steps 2, 3, 4, and 5.
 
 ## Training with ChangeFormer
 
-To successfully run the training, the `DataConfig` class in the `data_config.py` file must be updated with the appropriate dataset folder path.
+To successfully run the training, the `DataConfig` class in the [`data_config.py`](https://github.com/wgcban/ChangeFormer/blob/main/data_config.py) in [ChangeFormer](https://github.com/wgcban/ChangeFormer) must be updated with the appropriate dataset folder path.
 
-The provided Jupyter Notebook file facilitates the automatic generation of YAML configuration files necessary for executing the training process. Furthermore, an example YAML file is included in the same directory for reference.
+The provided Jupyter Notebook file facilitates the automatic generation of YAML configuration files necessary for executing the training process. An example YAML file is included in the same directory for reference.
 
