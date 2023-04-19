@@ -1,0 +1,30 @@
+{
+    "epochs": 100,
+    "model_architecture": "Unet",
+    "model_args": {
+        "encoder_name": "resnet50",
+        "encoder_weights": null
+    },
+    "gpus": [
+        0
+    ],
+    "batch_size_per_gpu": 4,
+    "num_classes": 2,
+    "training_data": [
+        {
+            "image_dir": "/canada2019-3/training_data_png/tcis/train",
+            "mask_dir": "/canada2019-3/training_data_png/labs/train"
+        }
+    ],
+    "optimizer_name": "Adam",
+    "optimizer_args": {
+        "lr": 1e-05
+    },
+    "validation_data": [
+        {
+            "image_dir": "/canada2019-3/training_data_png/tcis/validate",
+            "mask_dir": "/canada2019-3/training_data_png/labs/validate"
+        }
+    ],
+    "validate_while_training": true
+}
