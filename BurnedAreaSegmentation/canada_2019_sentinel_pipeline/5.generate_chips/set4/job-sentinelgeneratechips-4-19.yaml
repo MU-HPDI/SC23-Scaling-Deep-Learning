@@ -1,0 +1,32 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: job-sentinel-generatechips-4-19-3
+spec:
+  template:
+    spec:
+      containers:
+      - name: pod-sentinel-generatechips-4-19-3
+        image: gitlab-registry.nrp-nautilus.io/aomqc/deeplearning_pytorch:bc1aa4e7
+        workingDir: /canada/data/set4/batch_19
+        command: ["/bin/sh","-c"]
+        args:
+        - python3 generate_chips.py --csize 256 --cratio 0.25
+        volumeMounts:
+        - name: canada
+          mountPath: /canada  
+        resources:
+            limits:
+              memory: 40Gi
+              cpu: "2"
+              nvidia.com/gpu: 2
+            requests:
+              memory: 40Gi
+              cpu: "2"
+              nvidia.com/gpu: 2
+      volumes:
+      - name: canada 
+        persistentVolumeClaim:
+            claimName: canada2019-3
+      restartPolicy: OnFailure      
+  backoffLimit: 
