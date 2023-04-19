@@ -34,10 +34,10 @@ kubectl apply -f example.yaml
 We can also use a bash file to 
 - Automatically submit multiple jobs
 ```
-
+batch_start_train_jobs.bat
 ```
 - Automatically delete multiple jobs
 ```
-
+batch_end_train_jobs.bat
 ```
 
