@@ -1,0 +1,32 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: job-sentinel-normalize-5-4-3
+spec:
+  template:
+    spec:
+      containers:
+      - name: pod-sentinel-normalize-5-4-3
+        image: gitlab-registry.nrp-nautilus.io/aomqc/deeplearning_pytorch:bc1aa4e7
+        workingDir: /canada/data/set5/batch_4
+        command: ["/bin/sh","-c"]
+        args:
+        - python3 raster_normalize.py --nodata 0.8 --valid 0.25 --norm 2 --source 2A
+        volumeMounts:
+        - name: canada
+          mountPath: /canada  
+        resources:
+            limits:
+              memory: 40Gi
+              cpu: "2"
+              nvidia.com/gpu: 1
+            requests:
+              memory: 40Gi
+              cpu: "2"
+              nvidia.com/gpu: 1
+      volumes:
+      - name: canada 
+        persistentVolumeClaim:
+            claimName: canada2019-3
+      restartPolicy: OnFailure      
+  backoffLimit: 
