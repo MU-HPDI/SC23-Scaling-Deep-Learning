@@ -12,7 +12,7 @@ This container was used to train all [ChangeFormer](https://github.com/wgcban/Ch
 
 The data processing pipeline consists of sequential steps, where the output of one step serves as the input for the subsequent step.
 
-To start step 1 (download the Sentinel-2 tiles), ensure you meet the following requirements:
+### To start step 1 (download the Sentinel-2 tiles), ensure you meet the following requirements:
 
 1. **Create a Sentinel-2 API Account:** If you do not have an account, visit the [Copernicus Open Access Hub](https://scihub.copernicus.eu/) to create one.
 
