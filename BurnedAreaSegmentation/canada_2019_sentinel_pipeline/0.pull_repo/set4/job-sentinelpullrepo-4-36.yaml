@@ -1,0 +1,32 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: job-sentinel-pullrepo-4-36-3
+spec:
+  template:
+    spec:
+      containers:
+      - name: pod-sentinel-pullrepo-4-36-3
+        image: alpine/git
+        workingDir: /canada/data/set4/batch_36
+        args:
+          - clone
+          - --single-branch
+          - https://gitlab.nrp-nautilus.io/aomqc/sentinel_download
+          - /canada/data/set4/batch_36        
+        volumeMounts:
+        - name: canada
+          mountPath: /canada
+        resources:
+            limits:
+              memory: 1Gi
+              cpu: "1"
+            requests:
+              memory: 1Gi
+              cpu: "1"    
+      volumes:
+      - name: canada
+        persistentVolumeClaim:
+            claimName: canada2019-3
+      restartPolicy: OnFailure      
+  backoffLimit: 
