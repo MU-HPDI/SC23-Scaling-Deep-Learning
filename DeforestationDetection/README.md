@@ -8,28 +8,31 @@ jalexhurt/sc23-deforestation-detection
 
 This container was used to train all [ChangeFormer](https://github.com/wgcban/ChangeFormer) models.
 
-## Processing:
-All steps are connected, so, step 1 output will be step 2 input. 
+## Data Download and Processing
 
-- To be able to process Step 1:
-This code will automatically download the sentinel 2 tiles for you, but to do that, you need to meet the following criterias: 
+The data processing pipeline consists of sequential steps, where the output of one step serves as the input for the subsequent step.
 
-You need to set 2 environment variables to be able to run this code:
-SENTINELSAT_USERNAME
-SENTINELSAT_PASSWORD
+To start step 1 (download the Sentinel-2 tiles), ensure you meet the following requirements:
 
-If you don't have an account, you need to access this [link](https://scihub.copernicus.eu/) and create yours. Then add your credentials to the environment variables.
+1. **Create a Sentinel-2 API Account:** If you do not have an account, visit the [Copernicus Open Access Hub](https://scihub.copernicus.eu/) to create one.
 
-You also need to download the conservation units and the yearly deforestation files from [here](http://terrabrasilis.dpi.inpe.br/en/download-2/).
+2. **Set Environment Variables:** After registration, configure the following environment variables with your Sentinel-2 API credentials:
+   
+   - `SENTINELSAT_USERNAME`
+   - `SENTINELSAT_PASSWORD`
 
-you can run the code like this:
+3. **Download Required Data:** Obtain the conservation units and yearly deforestation files from the [TerraBrasilis website](http://terrabrasilis.dpi.inpe.br/en/download-2/).
+
+With the prerequisites in place, execute the `step1_download.py` script as follows:
 
 ```
 python step1_download.py yearly_deforestation.shp conservation_units_amazon_biome.shp <sentinel_output_dataset_path>
 ```
 
-## Training
+This command will automatically download the Sentinel-2 tiles, using the provided shapefiles for yearly deforestation and conservation units, and save the output to the specified dataset path.
 
-To be able to train using ChangeFormer, you need to edit the "data_config.py" file, changing the DataConfig class, to add your dataset folder.
+## Training with ChangeFormer
 
-There is a Jupyter Notebook file who I have used for creating the yaml file for running the training process. Besides that, an example of a yaml file can be found in the same folder here.
+In order to successfully run the training, you need to modify the `data_config.py` file by updating the `DataConfig` class. This includes specifying the path to your dataset folder.
+
+A Jupyter Notebook file is provided to assist you in creating the YAML configuration file needed to run the training process. Also you can refer to the example YAML file found in the same directory.
