@@ -1,0 +1,39 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: anes-job-evaluate-exp13-testdata-lowestmodel
+spec:
+  template:
+    spec:
+      containers:
+      - name: anes-pod-evaluate-exp13-testdata
+        image: gitlab-registry.nrp-nautilus.io/jhurt/cgisegment:e98e742e
+        #workingDir: /workspace/
+        command: ["/bin/sh","-c"]
+        args:
+        - python3 main.py --task test --output_dir /canada2019-3/experiments/exp13/output_dir_unet_img/lowest --config /canada2019-3/experiments/exp13/configs/unet_img_testing_config_lowest.json;
+          python3 main.py --task test --output_dir /canada2019-3/experiments/exp13/output_dir_unet_tci/lowest --config /canada2019-3/experiments/exp13/configs/unet_tci_testing_config_lowest.json;
+          python3 main.py --task test --output_dir /canada2019-3/experiments/exp13/output_dir_deeplab_img/lowest --config /canada2019-3/experiments/exp13/configs/deeplab_img_testing_config_lowest.json;
+          python3 main.py --task test --output_dir /canada2019-3/experiments/exp13/output_dir_deeplab_tci/lowest --config /canada2019-3/experiments/exp13/configs/deeplab_tci_testing_config_lowest.json;
+          python3 main.py --task test --output_dir /canada2019-3/experiments/exp13/output_dir_unet_img_pretrained/lowest --config /canada2019-3/experiments/exp13/configs/unet_img_testing_pretrained_config_lowest.json;
+          python3 main.py --task test --output_dir /canada2019-3/experiments/exp13/output_dir_unet_tci_pretrained/lowest --config /canada2019-3/experiments/exp13/configs/unet_tci_testing_pretrained_config_lowest.json;
+          python3 main.py --task test --output_dir /canada2019-3/experiments/exp13/output_dir_deeplab_img_pretrained/lowest --config /canada2019-3/experiments/exp13/configs/deeplab_img_testing_pretrained_config_lowest.json;
+          python3 main.py --task test --output_dir /canada2019-3/experiments/exp13/output_dir_deeplab_tci_pretrained/lowest --config /canada2019-3/experiments/exp13/configs/deeplab_tci_testing_pretrained_config_lowest.json
+        volumeMounts:
+        - name: canada2019-3
+          mountPath: /canada2019-3  
+        resources:
+            limits:
+              memory: 10Gi
+              cpu: "2"
+              nvidia.com/gpu: 1
+            requests:
+              memory: 10Gi
+              cpu: "2"
+              nvidia.com/gpu: 1
+      volumes:
+      - name: canada2019-3 
+        persistentVolumeClaim:
+            claimName: canada2019-3
+      restartPolicy: OnFailure      
+  backoffLimit: 
